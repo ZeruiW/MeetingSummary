@@ -1,6 +1,6 @@
-gradio==3.46.1
 PyPDF2
 langchain[all]
 openai 
 pymongo
 tiktoken
+gradio==3.46.1
