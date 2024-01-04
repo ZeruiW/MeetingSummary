@@ -272,5 +272,14 @@ with gr.Blocks(css=css) as demo:
     # )
 
     
+# if __name__ == "__main__":
+#     demo.queue().launch()
 if __name__ == "__main__":
-    demo.queue().launch()
+    # 启动Gradio应用，监听所有接口，设置端口为7860
+    # 你可以根据需要更改端口号
+    demo.queue().launch(
+        server_name="0.0.0.0",  # 监听所有网络接口
+        server_port=7860,       # 设置你想要的端口
+        enable_queue=True       # 如果你预计会有多个用户，启用队列
+        # auth=("username", "password")  # （可选）如果你想要添加HTTP基本认证，取消注释并替换为你的用户名和密码
+    )
