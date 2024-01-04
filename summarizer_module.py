@@ -10,10 +10,17 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains import ReduceDocumentsChain, MapReduceDocumentsChain
 from langchain.text_splitter import TokenTextSplitter
     
+# class OpenAISummarizer:
+#     def __init__(self, api_key):
+#         self.api_key = api_key
+#         os.environ["OPENAI_API_KEY"] = self.api_key
+#         self.llm = ChatOpenAI(model_name="gpt-3.5-turbo-16k", temperature=0)
 class OpenAISummarizer:
-    def __init__(self, api_key):
-        self.api_key = api_key
-        os.environ["OPENAI_API_KEY"] = self.api_key
+    def __init__(self):
+        self.api_key = os.getenv('OPENAI_API_KEY')
+        if not self.api_key:
+            raise ValueError("No OpenAI API key found. Please set the OPENAI_API_KEY environment variable.")
+        os.environ["OPENAI_API_KEY"] = self.api_key  # This line might not be necessary if the ChatOpenAI uses the environment variable by default.
         self.llm = ChatOpenAI(model_name="gpt-3.5-turbo-16k", temperature=0)
 
     def _summarize(self, inputData, map_template, reduce_template):
