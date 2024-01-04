@@ -246,11 +246,11 @@ with gr.Blocks(css=css) as demo:
     with gr.Column():
         output_file = gr.outputs.File(label="Download Summary")# Allow users to download the output
     
-    btnDB = gr.Button("Save the result/data to data base(Mangodb)")
+    #btnDB = gr.Button("Save the result/data to data base(Mangodb)")
     
-    with gr.Column():
-        successfulText = gr.Textbox(label="Storage Success Indicator")
-        dataName = gr.Textbox(label="data/record named as: ")
+    # with gr.Column():
+    #     successfulText = gr.Textbox(label="Storage Success Indicator")
+    #     dataName = gr.Textbox(label="data/record named as: ")
     
     btn.click(
         fn=summarize,
@@ -262,14 +262,14 @@ with gr.Blocks(css=css) as demo:
     )
     
     
-    btnDB.click(
-        fn=saveInMangodb,  
-        inputs=[
-            task, output_text
-        ],
-        outputs=[successfulText, dataName],
-        api_name="run",
-    )
+    # btnDB.click(
+    #     fn=saveInMangodb,  
+    #     inputs=[
+    #         task, output_text
+    #     ],
+    #     outputs=[successfulText, dataName],
+    #     api_name="run",
+    # )
 
     
 if __name__ == "__main__":
